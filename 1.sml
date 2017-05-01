@@ -1,5 +1,6 @@
 5;
-(* type: A type is a name for a collection *)
+(* type: A type is a name for a collection and there is no overlap for any two
+ distinct types*)
 
 datatype seasoning =
          Salt
@@ -31,31 +32,32 @@ there are more nums than bools, (because of the constructor?)
 the num of nums is equal to number of int (coutable set)
 *)
 
-datatype 'a open_faced_sandwitch =
+datatype 'a open_faced_sandwich =
          Bread of 'a
-         | Slice of 'a open_faced_sandwitch;
+         | Slice of 'a open_faced_sandwich;
 
-Bread(0); (* int open_faced_sandwitch *)
-Bread(Zero); (* num open_faced_sandwitch *)
-Bread(One_more_than(Zero)); (* num open_faced_sandwitch *)
+Bread(0); (* int open_faced_sandwich *)
+Bread(Zero); (* num open_faced_sandwich *)
+Bread(One_more_than(Zero)); (* num open_faced_sandwich *)
 
-Slice(Bread(0)); (* int open_faced_sandwitch *)
+Slice(Bread(0)); (* int open_faced_sandwich *)
 
 (*
-'a open_faced_sandwitch defines not a type but a shape which represents many
+'a open_faced_sandwich defines not a type but a shape which represents many
 different types (like generic?)
 
-int open_faced_sandwitch is an instance of a' open_faced_sandwitch where 'a
+int open_faced_sandwich is an instance of 'a open_faced_sandwich where 'a
 stands for int
 *)
 
-Bread(Bread(0)); (* is a instance of (int open_faced_sandwitch) open_faced_sandwitch *)
+Bread(Bread(0)); (* is a instance of (int open_faced_sandwich) open_faced_sandwich *)
 
 Bread(
     Bread(
         One_more_than(
             Zero)));
-(* is an instance of (num open_faced_sandwitch) open_faced_sandwitch *)
+(* is an instance of (num open_faced_sandwich) open_faced_sandwich *)
+(* Wow, types are types *)
 
 (*
 The First Moral
