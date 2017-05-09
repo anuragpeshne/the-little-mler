@@ -8,3 +8,7 @@ datatype definition refers to itself. Use 'a with datatype to define shapes.
 ### The Second Moral
 The number and order of the patterns in the definition of a function should match
 that of the definition of the consumed datatype.
+
+### The Third Moral
+Functions that produce values of a datatype must use the associated constructors
+to build data of that type.
