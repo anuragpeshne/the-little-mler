@@ -72,3 +72,36 @@ fun eq_main (Steak, Steak)
   | eq_main (Eggplant, Eggplant)
     = true;
 eq_main: (main * main) -> bool;
+
+fun eq_main_s (Steak, Steak)
+  = true
+  | eq_main_s (Ravioli, Ravioli)
+    = true
+  | eq_main_s (Chicken, Chicken)
+    = true
+  | eq_main_s (Eggplant, Eggplant)
+    = true
+  | eq_main_s (a_main, another_main)
+    = false;
+
+fun has_steak (a_meza, Steak, a_desert)
+  = true
+  | has_steak (a_meza, another_main, a_desert)
+    = false;
+
+(* this permits non sense!
+has_steak (3, Steak, true) *)
+has_steak: (meza, main, desert) -> bool;
+
+(* or restrict the types *)
+fun has_steak_restricted (m:meza, Steak, d:desert)
+  = true
+  | has_steak_restricted (m:meza, ns, d:desert)
+    = false;
+
+fun add_a_steak_abridged_restricted (x: meza): (x:meza * main)
+  = (x, Steak);
+
+(* The Fourth Moral:
+Some functions consume values of start type;
+some produce values of star type *)

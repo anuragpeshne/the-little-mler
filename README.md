@@ -12,3 +12,6 @@ that of the definition of the consumed datatype.
 ### The Third Moral
 Functions that produce values of a datatype must use the associated constructors
 to build data of that type.
+
+### The Fourth Moral
+Some functions consume values of star type; some produce of star type.
