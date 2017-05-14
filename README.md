@@ -15,3 +15,7 @@ to build data of that type.
 
 ### The Fourth Moral
 Some functions consume values of star type; some produce of star type.
+
+### The Fifth Moral
+Write the first draft of a function following all the morals. Write it is correct
+and no sooner, simplify.
