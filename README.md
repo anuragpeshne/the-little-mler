@@ -19,3 +19,6 @@ Some functions consume values of star type; some produce of star type.
 ### The Fifth Moral
 Write the first draft of a function following all the morals. Write it is correct
 and no sooner, simplify.
+
+### The Sixth Moral
+As datatype definitions get more complicated, so do the functions over them.
