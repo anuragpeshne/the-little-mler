@@ -29,17 +29,33 @@ fun help (f)
           then f
           else true_maker));
 help: ('a -> bool) -> bool_or_int;
-(* it doesn't matter if we replace the argument to true_maker from 5 to true,
-* true maker always produces true *)
-
 (*
-* 'a -> (bool -> bool_or_int): is a function that takes in parameters of any
-* kind and produces a function of type bool -> bool_or_int
-*
-* ('a -> bool) -> bool_or_int: is a function which takes in a function of type
-* ('a -> bool) and produces value of type  bool_or_int 
-*
-* functions can take in functions and produce them
-* functions are values, too
-*
-* help: 'a -> bool_or_int *)
+it doesn't matter if we replace the argument to true_maker from 5 to true,
+true_maker always produces true
+
+'a -> (bool -> bool_or_int): is a function that takes in parameters of any
+kind and produces a function of type (bool -> bool_or_int);
+
+functions can take in functions and produce them
+functions are values, too;
+
+In
+if exp1
+then exp2
+else exp3;
+
+exp2 and exp3 need to be of the same type
+
+that means, f and true_maker are of same type
+f: 'a -> bool
+
+help: ('a -> bool) -> bool_or_int;
+*)
+datatype chain =
+         Link of (int * (int -> chain));
+(* to create variable of type chain, we need a function of type (int -> chain) *)
+
+fun ints (n)
+  = Link (n + 1, ints);
+ints: int -> chain;
+(* ints has type int -> chain, so it can be used in definition of ints *)
