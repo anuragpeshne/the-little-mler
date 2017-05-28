@@ -59,3 +59,27 @@ fun ints (n)
   = Link (n + 1, ints);
 ints: int -> chain;
 (* ints has type int -> chain, so it can be used in definition of ints *)
+
+ints (0);
+(* it = Link (1, ints) *)
+
+fun skips (n)
+  = Link (n + 2, skips);
+skips (8);
+(* Link (10, skips) *)
+
+fun divides_evenly (n, c)
+  = eq_int ((n mod c), 0);
+divides_evenly: (int * int) -> bool;
+
+is_mod_5_or_7 (n)
+= if divides_evenly (5)
+  then true
+  else divides_evenly (7);
+is_mod_5_or_7: int -> bool;
+
+fun some_ints (n)
+  = if is_mod_5_or_7 (n + 1)
+    then Link (n + 1, some_ints)
+    else some_ints (n + 1);
+some_ints: int -> chain;
