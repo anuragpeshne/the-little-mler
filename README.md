@@ -22,3 +22,6 @@ and no sooner, simplify.
 
 ### The Sixth Moral
 As datatype definitions get more complicated, so do the functions over them.
+
+### The Seventh Moral
+Some functions consume values of arrow type; some produce values of arrow type
