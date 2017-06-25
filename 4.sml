@@ -1,4 +1,4 @@
-(* Look to the Starts *)
+(* Look to the Stars *)
 
 datatype meza =
          Shrimp
