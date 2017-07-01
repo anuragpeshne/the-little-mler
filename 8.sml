@@ -182,3 +182,52 @@ fun combine_c (Empty) (l2)
     = Cons (a, combine_c (l1) (l2));
 
 combine_c: ('a list) -> ('a list -> 'a list);
+
+fun prefixer_123 (l2)
+  = Cons (1,
+          Cons (2,
+                Cons (3,
+                      l2)));
+
+(* prefixer_123 is equivalent to
+combine_c (Cons (1,
+                Cons (2,
+                     Cons (3,
+                          Empty))));
+Note that it is in curried form
+
+But when curried form is used, combine_c evaluated only first Cons(1 and waits for
+l2. In case of prefixer_123, all cons are evaluated
+ *)
+
+fun waiting_prefixer_123 (l2)
+  = Cons (1,
+          combine_c (
+              Cons (2,
+                    Cons (3,
+                          Empty)))
+                    (l2));
+(* we want to produce results like prefixer_123 when used with 3 Cons instead of
+what we did in waiting_prefixer *)
+
+(* staged prefixer
+Staged prefixer takes in a list and returns a function which takes in a list and
+combines the two list
+ *)
+fun combine_s (Empty)
+  = base
+  | combine_s (Cons (a, l1))
+    = make_cons (a, combine_s (l1))
+and
+make_cons (a, f)(l2)
+= Cons (a, f (l2));
+
+combine_s: 'a list -> ('a list -> 'a list);
+make_cons: ('a * ('a list -> 'a list)) -> ('a list -> 'a list);
+
+fun base (l1)
+  = l1;
+
+(* The Eighth Moral
+Replace stars by arrows to reduce the number of values consumed and to increase
+the generality of the function defined *)
