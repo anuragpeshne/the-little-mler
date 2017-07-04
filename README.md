@@ -29,3 +29,7 @@ Some functions consume values of arrow type; some produce values of arrow type
 ### The Eighth Moral
 Replace stars by arrows to reduce the number of values consumed and to increase
 the generality of the function defined
+
+### The Ninth Moral
+Some functions produce exceptions instead of values; some don't produce anything.
+Handle raised exceptions carefully.
