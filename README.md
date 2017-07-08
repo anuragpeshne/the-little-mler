@@ -33,3 +33,7 @@ the generality of the function defined
 ### The Ninth Moral
 Some functions produce exceptions instead of values; some don't produce anything.
 Handle raised exceptions carefully.
+
+### The Tenth Moral
+Real programs consist of many components. Specify the dependencies among these using
+signatures and functors.
