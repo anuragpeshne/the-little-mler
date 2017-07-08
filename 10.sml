@@ -66,3 +66,46 @@ signature keyword just links the signature and name N *)
 
 (* A signature is like a type int -> int. Each elements of this type must be a function
    and furthermore each element must consume and produce an int *)
+
+functor NumberAsNum()
+        :>
+        N
+=
+struct
+datatype num =
+         Zero
+         | One_more_than of num
+type number = num
+exception Too_small
+fun succ (n)
+  = One_more_than (n)
+fun pred (Zero)
+  = raise Too_small
+  | pred (One_more_than (n))
+    = n
+fun is_zero (Zero)
+  = true
+  | is_zero (a_num)
+    = false
+end;
+
+functor NumberAsInt()
+        :>
+        N
+= struct
+type number = int
+exception Too_small
+fun succ (n)
+  = n + 1
+fun pred (n)
+         if eq_int (0, n)
+         then raise Too_small
+         else n - 1
+fun is_zero (n)
+  = eq_int (n, 0)
+end;
+
+(* a functor makes a name stand for something that produces structures
+() means that the functor does not depend on anything else
+:> means result of using the functor is a structure with signature N
+ *)
